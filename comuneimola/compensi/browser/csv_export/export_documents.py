@@ -159,11 +159,18 @@ class CsvExport(BrowserView):
     @property
     def get_query(self):
         path = '/'.join(self.context.getPhysicalPath())
-        return {'portal_type': 'ATCompenso',
-                'review_state': 'published',
-                'path': {'query': path,
-                         'depth': 1}
-                }
+        query = {
+            'portal_type': 'ATCompenso',
+            'path': {
+                'query': path,
+                'depth': 1
+            }
+        }
+        enabled_csv_states = self.context.getCsv_states()
+        print enabled_csv_states
+        states = enabled_csv_states or ['published', ]
+        query['review_state'] = states
+        return query
 
     def get_elements(self, objects=False):
         pc = getToolByName(self.context, 'portal_catalog')

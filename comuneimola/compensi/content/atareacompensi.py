@@ -49,6 +49,14 @@ ATAreaCompensiSchema = folder.ATFolderSchema.copy() + atapi.Schema((
             ),
         required=False,
     ),
+    atapi.LinesField(name='csv_states',
+        widget=atapi.MultiSelectionWidget(
+            label=_(u"Review state allowed to be exported into CSV"),
+            format='checkbox'
+        ),
+        required=False,
+        vocabulary_factory='plone.app.vocabularies.WorkflowStates',
+    ),
 
 ))
 
