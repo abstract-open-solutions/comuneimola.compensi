@@ -12,7 +12,7 @@
         tal:define="portal context/@@plone_portal_state/portal">
 
     <script type="text/javascript"
-            tal:attributes="src string:${portal/absolute_url}/++resource++jquery.datatables.js">
+            tal:attributes="src string:${portal/absolute_url}/++plone++ispra.layout/jquery.datatables.min.js">
     </script>
 
     <script type="text/javascript"
